@@ -28,6 +28,7 @@ router.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
 // post new employee
 router.post("/", async (req, res, next) => {
   try {

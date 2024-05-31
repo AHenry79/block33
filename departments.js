@@ -15,4 +15,17 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+
+// get employees by department id
+router.get("/:department_id", async (req, res, next) => {
+  try {
+    const response = await client.query(
+      `SELECT * FROM employees WHERE department_id = $1`,
+      [req.params.department_id]
+    );
+    res.send(response.rows);
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;
